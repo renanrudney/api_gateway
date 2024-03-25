@@ -1,0 +1,20 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Nome do Cliente",
+      "email": "email@cliente.com",
+      "cpf": "11111111111",
+      "endereco": "Rua do Cliente",
+      "salario": "1234.56"
+    },
+    {
+      "id": 2,
+      "nome": "Nome do Outro Cliente",
+      "email": "email@outro_cliente.com",
+      "cpf": "22222222222",
+      "endereco": "Rua do Outro Cliente",
+      "salario": "6543.21"
+    }
+  ]
+}
