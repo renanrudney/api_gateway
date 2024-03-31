@@ -1,0 +1,18 @@
+{
+  "gerentes": [
+    {
+      "id": 1,
+      "nome": "Gerente 1",
+      "email": "email@gerente1.com",
+      "cpf": "11111111111",
+      "quantidadeContas": 1
+    },
+    {
+      "id": 2,
+      "nome": "Gerente 2",
+      "email": "email@gerente2.com",
+      "cpf": "22222222222",
+      "quantidadeContas": 1
+    }
+  ]
+}
