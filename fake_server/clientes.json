@@ -2,18 +2,36 @@
   "clientes": [
     {
       "id": 1,
-      "nome": "Nome do Cliente",
-      "email": "email@cliente.com",
+      "nome": "Cliente 1",
+      "email": "email@cliente1.com",
       "cpf": "11111111111",
-      "endereco": "Rua do Cliente",
+      "endereco": {
+        "id": 1,
+        "logradouro": "Rua1",
+        "numero": "1",
+        "complemento": "casa1",
+        "tipo": "",
+        "cep": "11111111",
+        "cidade": "cidade1",
+        "estado": "estado1"
+      },
       "salario": "1234.56"
     },
     {
       "id": 2,
-      "nome": "Nome do Outro Cliente",
-      "email": "email@outro_cliente.com",
+      "nome": "Cliente 2",
+      "email": "email@cliente2.com",
       "cpf": "22222222222",
-      "endereco": "Rua do Outro Cliente",
+      "endereco": {
+        "id": 2,
+        "logradouro": "Rua2",
+        "numero": "2",
+        "complemento": "casa2",
+        "tipo": "",
+        "cep": "22222222",
+        "cidade": "cidade2",
+        "estado": "estado2"
+      },
       "salario": "6543.21"
     }
   ]

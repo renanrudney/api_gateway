@@ -15,12 +15,52 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-const clientesServiceProxy = httpProxy('http://localhost:5000')
+// proxies
+
+const clientesServiceProxy = httpProxy('http://localhost:5002')
+const clientesPostServiceProxy = httpProxy('http://localhost:5002')
+
+const gerentesGetServiceProxy = httpProxy('http://localhost:5003')
+const gerentesPostServiceProxy = httpProxy('http://localhost:5003')
+const gerentesPutServiceProxy = httpProxy('http://localhost:5003')
+
 
 // routes
+
+// clientes
 app.get('/clientes', function (req, res, next) {
   clientesServiceProxy(req, res, next)
 })
+
+app.post('/clientes', function (req, res, next) {
+  clientesPostServiceProxy(req, res, next)
+})
+
+// gerentes
+
+app.post('/gerentes', (req, res, next) => {
+  gerentesPostServiceProxy(req, res, next);
+});
+
+app.put('/gerentes/:id', (req, res, next) => {
+  gerentesPutServiceProxy(req, res, next);
+});
+
+app.get('/gerentes/:id', (req, res, next) => {
+  gerentesGetServiceProxy(req, res, next);
+});
+
+app.get('/gerentes', (req, res, next) => {
+  gerentesGetServiceProxy(req, res, next);
+});
+
+app.get('/gerentes/email/:email', (req, res, next) => {
+  gerentesGetServiceProxy(req, res, next);
+});
+
+app.delete('/gerentes/:id', (req, res, next) => {
+  gerentesGetServiceProxy(req, res, next);
+});
 
 // config
 app.use(logger('dev'))
