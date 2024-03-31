@@ -8,6 +8,11 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var logger = require('morgan')
 const helmet = require('helmet')
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'http://localhost:4200'
+}));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
