@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+function verifyJWT(req, res, next) {
+  next();
+}
+
 // proxies
 
 const clientesServiceProxy = httpProxy('http://localhost:5002')
@@ -29,6 +33,8 @@ const gerentesGetServiceProxy = httpProxy('http://localhost:5003')
 const gerentesPostServiceProxy = httpProxy('http://localhost:5003')
 const gerentesPutServiceProxy = httpProxy('http://localhost:5003')
 
+const contasServiceProxy = httpProxy('http://localhost:5004');
+const contasPostServiceProxy = httpProxy('http://localhost:5004');
 
 // routes
 
@@ -43,28 +49,79 @@ app.post('/clientes', function (req, res, next) {
 
 // gerentes
 
-app.post('/gerentes', (req, res, next) => {
+app.post('/gerentes', verifyJWT, (req, res, next) => {
   gerentesPostServiceProxy(req, res, next);
 });
 
-app.put('/gerentes/:id', (req, res, next) => {
+app.put('/gerentes/:id', verifyJWT, (req, res, next) => {
   gerentesPutServiceProxy(req, res, next);
 });
 
-app.get('/gerentes/:id', (req, res, next) => {
+app.get('/gerentes/:id', verifyJWT, (req, res, next) => {
   gerentesGetServiceProxy(req, res, next);
 });
 
-app.get('/gerentes', (req, res, next) => {
+app.get('/gerentes', verifyJWT, (req, res, next) => {
   gerentesGetServiceProxy(req, res, next);
 });
 
-app.get('/gerentes/email/:email', (req, res, next) => {
+app.get('/gerentes/email/:email', verifyJWT, (req, res, next) => {
   gerentesGetServiceProxy(req, res, next);
 });
 
-app.delete('/gerentes/:id', (req, res, next) => {
+app.delete('/gerentes/:id', verifyJWT, (req, res, next) => {
   gerentesGetServiceProxy(req, res, next);
+});
+
+// contas
+
+app.post('/contas', verifyJWT, function (req, res, next) {
+  contasPostServiceProxy(req, res, next);
+});
+
+// TEMP: fake get contas
+app.get('/contas', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.get('/contas/gerente/:id', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.get('/contas/gerente/:id/top', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.get('/contas/gerente/:id/cliente/:cpf', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.post('/contas/:numero/aprovada', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.post('/contas/:numero/reprovada', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.get('/contas/cliente/:id', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.post('/contas/:numero/deposito', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.post('/contas/:numero/saque', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.post('/contas/:numero/transferencia', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
+});
+
+app.get('/contas/:numero/extrato', verifyJWT, function (req, res, next) {
+  contasServiceProxy(req, res, next);
 });
 
 // config

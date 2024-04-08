@@ -1,0 +1,16 @@
+{
+  "contas": [
+    {
+      "numero": 1,
+      "idCliente": 1,
+      "nomeCliente": "Nome",
+      "dataCriacao": "",
+      "limite": 0,
+	    "saldo": 0,
+      "aprovada": true,
+      "motivoReprovacao": "",
+      "dataHoraAprovacaoReprovacao": "",
+      "idGerente": 2
+    }
+  ]
+}
